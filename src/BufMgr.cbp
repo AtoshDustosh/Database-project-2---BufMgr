@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="BufMgr" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/BufMgr" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/BufMgr" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="License.txt" />
+		<Unit filename="bufHashTbl.cpp" />
+		<Unit filename="bufHashTbl.h" />
+		<Unit filename="buffer.cpp" />
+		<Unit filename="buffer.h" />
+		<Unit filename="exceptions/bad_buffer_exception.cpp" />
+		<Unit filename="exceptions/bad_buffer_exception.h" />
+		<Unit filename="exceptions/badgerdb_exception.cpp" />
+		<Unit filename="exceptions/badgerdb_exception.h" />
+		<Unit filename="exceptions/buffer_exceeded_exception.cpp" />
+		<Unit filename="exceptions/buffer_exceeded_exception.h" />
+		<Unit filename="exceptions/file_exists_exception.cpp" />
+		<Unit filename="exceptions/file_exists_exception.h" />
+		<Unit filename="exceptions/file_not_found_exception.cpp" />
+		<Unit filename="exceptions/file_not_found_exception.h" />
+		<Unit filename="exceptions/file_open_exception.cpp" />
+		<Unit filename="exceptions/file_open_exception.h" />
+		<Unit filename="exceptions/hash_already_present_exception.cpp" />
+		<Unit filename="exceptions/hash_already_present_exception.h" />
+		<Unit filename="exceptions/hash_not_found_exception.cpp" />
+		<Unit filename="exceptions/hash_not_found_exception.h" />
+		<Unit filename="exceptions/hash_table_exception.cpp" />
+		<Unit filename="exceptions/hash_table_exception.h" />
+		<Unit filename="exceptions/insufficient_space_exception.cpp" />
+		<Unit filename="exceptions/insufficient_space_exception.h" />
+		<Unit filename="exceptions/invalid_page_exception.cpp" />
+		<Unit filename="exceptions/invalid_page_exception.h" />
+		<Unit filename="exceptions/invalid_record_exception.cpp" />
+		<Unit filename="exceptions/invalid_record_exception.h" />
+		<Unit filename="exceptions/invalid_slot_exception.cpp" />
+		<Unit filename="exceptions/invalid_slot_exception.h" />
+		<Unit filename="exceptions/page_not_pinned_exception.cpp" />
+		<Unit filename="exceptions/page_not_pinned_exception.h" />
+		<Unit filename="exceptions/page_pinned_exception.cpp" />
+		<Unit filename="exceptions/page_pinned_exception.h" />
+		<Unit filename="exceptions/slot_in_use_exception.cpp" />
+		<Unit filename="exceptions/slot_in_use_exception.h" />
+		<Unit filename="file.cpp" />
+		<Unit filename="file.h" />
+		<Unit filename="file_iterator.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main.hpp" />
+		<Unit filename="page.cpp" />
+		<Unit filename="page.h" />
+		<Unit filename="page_iterator.h" />
+		<Unit filename="test.1" />
+		<Unit filename="test.2" />
+		<Unit filename="test.3" />
+		<Unit filename="test.4" />
+		<Unit filename="test.5" />
+		<Unit filename="types.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

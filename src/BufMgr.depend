@@ -1,0 +1,231 @@
+# depslib dependency file v1.0
+1379395522 source:e:\c++_projects\bufmgr\exceptions\badgerdb_exception.cpp
+	"badgerdb_exception.h"
+
+1379395522 e:\c++_projects\bufmgr\exceptions\badgerdb_exception.h
+	<exception>
+	<string>
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\buffer_exceeded_exception.cpp
+	"buffer_exceeded_exception.h"
+	<sstream>
+	<string>
+
+1379395522 e:\c++_projects\bufmgr\exceptions\buffer_exceeded_exception.h
+	<string>
+	"badgerdb_exception.h"
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\file_exists_exception.cpp
+	"file_exists_exception.h"
+	<sstream>
+	<string>
+
+1379395522 e:\c++_projects\bufmgr\exceptions\file_exists_exception.h
+	<string>
+	"badgerdb_exception.h"
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\file_not_found_exception.cpp
+	"file_not_found_exception.h"
+	<sstream>
+	<string>
+
+1379395522 e:\c++_projects\bufmgr\exceptions\file_not_found_exception.h
+	<string>
+	"badgerdb_exception.h"
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\file_open_exception.cpp
+	"file_open_exception.h"
+	<sstream>
+	<string>
+
+1379395522 e:\c++_projects\bufmgr\exceptions\file_open_exception.h
+	<string>
+	"badgerdb_exception.h"
+
+1379395522 source:e:\c++_projects\bufmgr\buffer.cpp
+	<memory>
+	<iostream>
+	"buffer.h"
+	"exceptions/buffer_exceeded_exception.h"
+	"exceptions/page_not_pinned_exception.h"
+	"exceptions/page_pinned_exception.h"
+	"exceptions/bad_buffer_exception.h"
+	"exceptions/hash_not_found_exception.h"
+
+1379395522 e:\c++_projects\bufmgr\buffer.h
+	"file.h"
+	"bufHashTbl.h"
+
+1379395522 e:\c++_projects\bufmgr\file.h
+	<fstream>
+	<string>
+	<map>
+	<memory>
+	"page.h"
+
+1379395522 e:\c++_projects\bufmgr\page.h
+	<cstddef>
+	<stdint.h>
+	<memory>
+	<string>
+	"types.h"
+
+1379395524 e:\c++_projects\bufmgr\types.h
+
+1379395522 e:\c++_projects\bufmgr\bufhashtbl.h
+	"file.h"
+
+1586922413 e:\c++_projects\bufmgr\exceptions\page_not_pinned_exception.h
+	<string>
+	"badgerdb_exception.h"
+	"../types.h"
+
+1586922427 e:\c++_projects\bufmgr\exceptions\page_pinned_exception.h
+	<string>
+	"badgerdb_exception.h"
+	"../types.h"
+
+1586922430 e:\c++_projects\bufmgr\exceptions\bad_buffer_exception.h
+	<string>
+	"badgerdb_exception.h"
+	"../types.h"
+
+1586922433 e:\c++_projects\bufmgr\exceptions\hash_not_found_exception.h
+	<string>
+	"badgerdb_exception.h"
+	"../types.h"
+
+1379395522 source:e:\c++_projects\bufmgr\bufhashtbl.cpp
+	<memory>
+	<iostream>
+	"buffer.h"
+	"bufHashTbl.h"
+	"exceptions/hash_already_present_exception.h"
+	"exceptions/hash_not_found_exception.h"
+	"exceptions/hash_table_exception.h"
+
+1586922439 e:\c++_projects\bufmgr\exceptions\hash_already_present_exception.h
+	<string>
+	"badgerdb_exception.h"
+	"../types.h"
+
+1379395522 e:\c++_projects\bufmgr\exceptions\hash_table_exception.h
+	<string>
+	"badgerdb_exception.h"
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\bad_buffer_exception.cpp
+	"bad_buffer_exception.h"
+	<sstream>
+	<string>
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\hash_already_present_exception.cpp
+	"hash_already_present_exception.h"
+	<sstream>
+	<string>
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\hash_not_found_exception.cpp
+	"hash_not_found_exception.h"
+	<sstream>
+	<string>
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\hash_table_exception.cpp
+	"hash_table_exception.h"
+	<sstream>
+	<string>
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\insufficient_space_exception.cpp
+	"insufficient_space_exception.h"
+	<sstream>
+	<string>
+
+1586922558 e:\c++_projects\bufmgr\exceptions\insufficient_space_exception.h
+	<string>
+	"badgerdb_exception.h"
+	"../types.h"
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\invalid_page_exception.cpp
+	"invalid_page_exception.h"
+	<sstream>
+	<string>
+
+1586922561 e:\c++_projects\bufmgr\exceptions\invalid_page_exception.h
+	<string>
+	"badgerdb_exception.h"
+	"../types.h"
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\page_not_pinned_exception.cpp
+	"page_not_pinned_exception.h"
+	<sstream>
+	<string>
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\invalid_record_exception.cpp
+	"invalid_record_exception.h"
+	<sstream>
+	<string>
+
+1586922565 e:\c++_projects\bufmgr\exceptions\invalid_record_exception.h
+	<string>
+	"badgerdb_exception.h"
+	"../types.h"
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\page_pinned_exception.cpp
+	"page_pinned_exception.h"
+	<sstream>
+	<string>
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\invalid_slot_exception.cpp
+	"invalid_slot_exception.h"
+	<sstream>
+	<string>
+
+1586922569 e:\c++_projects\bufmgr\exceptions\invalid_slot_exception.h
+	<string>
+	"badgerdb_exception.h"
+	"../types.h"
+
+1379395522 source:e:\c++_projects\bufmgr\file.cpp
+	"file.h"
+	<fstream>
+	<iostream>
+	<memory>
+	<string>
+	<cstdio>
+	<cassert>
+	"exceptions/file_exists_exception.h"
+	"exceptions/file_not_found_exception.h"
+	"exceptions/file_open_exception.h"
+	"exceptions/invalid_page_exception.h"
+	"file_iterator.h"
+	"page.h"
+
+1379395522 e:\c++_projects\bufmgr\file_iterator.h
+	<cassert>
+	"file.h"
+	"page.h"
+	"types.h"
+
+1379395522 source:e:\c++_projects\bufmgr\exceptions\slot_in_use_exception.cpp
+	"slot_in_use_exception.h"
+	<sstream>
+	<string>
+
+1586922575 e:\c++_projects\bufmgr\exceptions\slot_in_use_exception.h
+	<string>
+	"badgerdb_exception.h"
+	"../types.h"
+
+1379395522 source:e:\c++_projects\bufmgr\page.cpp
+	<cassert>
+	"exceptions/insufficient_space_exception.h"
+	"exceptions/invalid_record_exception.h"
+	"exceptions/invalid_slot_exception.h"
+	"exceptions/slot_in_use_exception.h"
+	"page_iterator.h"
+	"page.h"
+
+1379395522 e:\c++_projects\bufmgr\page_iterator.h
+	<cassert>
+	"file.h"
+	"page.h"
+	"types.h"
+
