@@ -65,7 +65,7 @@ namespace badgerdb {
       /**
        * Constructor of BufHashTbl class
        */
-      BufHashTbl(const int htSize);  // constructor
+      BufHashTbl(const int htSize); // constructor
 
       /**
        * Destructor of BufHashTbl class
@@ -89,7 +89,8 @@ namespace badgerdb {
        *
        * @param file  	File object
        * @param pageNo	Page number in the file
-       * @param frameNo Frame number reference
+       * @param frameNo Frame number reference. The frame number assigned to the page
+       *                is returned via this reference
        * @throws HashNotFoundException if the page entry is not found in the hash table
        */
       void lookup(const File *file, const PageId pageNo, FrameId &frameNo);

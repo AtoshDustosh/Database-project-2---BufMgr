@@ -74,8 +74,9 @@ namespace badgerdb {
       ;
 
       /**
-       * Set values of member variables corresponding to assignment of frame to a page in the file. Called when a frame
-       * in buffer pool is allocated to any page in the file through readPage() or allocPage()
+       * Set values of member variables corresponding to assignment of frame to
+       * a page in the file. Called when a frame in buffer pool is allocated to
+       * any page in the file through readPage() or allocPage().
        *
        * @param filePtr	File object
        * @param pageNum	Page number in the file
@@ -182,14 +183,16 @@ namespace badgerdb {
       /**
        * Allocate a free frame.
        *
-       * @param frame   	Frame reference, frame ID of allocated frame returned via this variable
-       * @throws BufferExceededException If no such buffer is found which can be allocated
+       * @param frame   	Frame reference, frame ID of allocated frame returned
+       *        via this variable
+       * @throws BufferExceededException If no such buffer is found which can be
+       *         allocated
        */
       void allocBuf(FrameId &frame);
 
     public:
       /**
-       * Actual buffer pool from which frames are allocated - an array of Page objects. 
+       * Actual buffer pool from which frames are allocated - an array of Page objects.
        */
       Page *bufPool; // stores the frames
 
@@ -204,18 +207,21 @@ namespace badgerdb {
       ~BufMgr();
 
       /**
-       * Reads the given page from the file into a frame and returns the pointer to page.
-       * If the requested page is already present in the buffer pool pointer to that frame is returned
-       * otherwise a new frame is allocated from the buffer pool for reading the page.
+       * Reads the given page from the file into a frame and returns the pointer to
+       * page. If the requested page is already present in the buffer pool pointer
+       * to that frame is returned otherwise a new frame is allocated from the
+       * buffer pool for reading the page.
        *
        * @param file   	File object
        * @param PageNo  Page number in the file to be read
-       * @param page  	Reference to page pointer. Used to fetch the Page object in which requested page from file is read in.
+       * @param page  	Reference to page pointer. Used to fetch the Page object in
+       *                which requested page from file is read in.
        */
       void readPage(File *file, const PageId PageNo, Page *&page);
 
       /**
-       * Unpin a page from memory since it is no longer required for it to remain in memory.
+       * Unpin a page from memory since it is no longer required for it to remain
+       * in memory.
        *
        * @param file   	File object
        * @param PageNo  Page number
@@ -229,25 +235,31 @@ namespace badgerdb {
        * The newly allocated page is also assigned a frame in the buffer pool.
        *
        * @param file   	File object
-       * @param PageNo  Page number. The number assigned to the page in the file is returned via this reference.
-       * @param page  	Reference to page pointer. The newly allocated in-memory Page object is returned via this reference.
+       * @param PageNo  Page number. The number assigned to the page in the file
+       *                is returned via this reference.
+       * @param page  	Reference to page pointer. The newly allocated in-memory
+       *                Page object is returned via this reference.
        */
       void allocPage(File *file, PageId &PageNo, Page *&page);
 
       /**
        * Writes out all dirty pages of the file to disk.
-       * All the frames assigned to the file need to be unpinned from buffer pool before this function can be successfully called.
+       * All the frames assigned to the file need to be unpinned from buffer pool
+       * before this function can be successfully called.
        * Otherwise Error returned.
        *
        * @param file   	File object
-       * @throws  PagePinnedException If any page of the file is pinned in the buffer pool
-       * @throws BadBufferException If any frame allocated to the file is found to be invalid
+       * @throws  PagePinnedException If any page of the file is pinned in the
+       *          buffer pool
+       * @throws BadBufferException If any frame allocated to the file is found
+       *         to be invalid
        */
       void flushFile(const File *file);
 
       /**
        * Delete page from file and also from buffer pool if present.
-       * Since the page is entirely deleted from file, its unnecessary to see if the page is dirty.
+       * Since the page is entirely deleted from file, it's unnecessary to see
+       * if the page is dirty.
        *
        * @param file   	File object
        * @param PageNo  Page number

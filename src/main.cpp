@@ -42,6 +42,7 @@ void testBufMgr();
 void myTest();
 
 int main() {
+  setvbuf(stdout, NULL, _IONBF, 0);
 //  //Following code shows how to use File and Page classes
 //
 //  const std::string &filename = "test.db";
@@ -95,9 +96,10 @@ int main() {
 //  File::remove(filename);
 
 //This function tests buffer manager, comment this line if you don't wish to test buffer manager
-//  testBufMgr();
-  myTest();
+  testBufMgr();
+//  myTest();
 
+  return 0;
 }
 
 void testReference(int *&ref) {
@@ -118,11 +120,11 @@ void testBufMgr() {
   bufMgr = new BufMgr(num);
 
   // create dummy files
-  const std::string &filename1 = "test.1";
-  const std::string &filename2 = "test.2";
-  const std::string &filename3 = "test.3";
-  const std::string &filename4 = "test.4";
-  const std::string &filename5 = "test.5";
+  const std::string &filename1 = "src/test.1";
+  const std::string &filename2 = "src/test.2";
+  const std::string &filename3 = "src/test.3";
+  const std::string &filename4 = "src/test.4";
+  const std::string &filename5 = "src/test.5";
 
   try {
     File::remove(filename1);
@@ -150,11 +152,11 @@ void testBufMgr() {
   //So, they have to be run in the following order.
   //Commenting  a particular test requires commenting all tests that follow it else those tests would fail.
   test1();
-//  test2();
-//  test3();
-//  test4();
-//  test5();
-//  test6();
+  test2();
+  test3();
+  test4();
+  test5();
+  test6();
 
   //Close files before deleting them
   file1.~File();
@@ -176,13 +178,17 @@ void testBufMgr() {
 }
 
 void test1() {
+//  bufMgr->printSelf();
   //Allocating pages in a file...
   for (i = 0; i < num; i++) {
     bufMgr->allocPage(file1ptr, pid[i], page);
     sprintf((char*) tmpbuf, "test.1 Page %d %7.1f", pid[i], (float) pid[i]);
     rid[i] = page->insertRecord(tmpbuf);
     bufMgr->unPinPage(file1ptr, pid[i], true);
+//    std::printf("i(%d): %s\n", i, tmpbuf);
   }
+
+//  bufMgr->printSelf();
 
   //Reading pages back...
   for (i = 0; i < num; i++) {
@@ -192,7 +198,9 @@ void test1() {
       PRINT_ERROR("ERROR :: CONTENTS DID NOT MATCH");
     }
     bufMgr->unPinPage(file1ptr, pid[i], false);
+//    std::printf("i(%d): %s\n", i, tmpbuf);
   }
+//  bufMgr->printSelf();
   std::cout << "Test 1 passed" << "\n";
 }
 
@@ -201,36 +209,55 @@ void test2() {
   //The page number and the value should match
 
   for (i = 0; i < num / 3; i++) {
+//    std::cout << "______0" << "\n";
     bufMgr->allocPage(file2ptr, pageno2, page2);
     sprintf((char*) tmpbuf, "test.2 Page %d %7.1f", pageno2, (float) pageno2);
     rid2 = page2->insertRecord(tmpbuf);
+//    std::cout << "(pageno2:" << pageno2 << ")" << page2->getRecord(rid2)
+//        << "\n";
+//    std::cout << tmpbuf << "\n";
 
+//    std::cout << "______1" << "\n";
     int index = rand() % num;
     pageno1 = pid[index];
     bufMgr->readPage(file1ptr, pageno1, page);
     sprintf((char*) tmpbuf, "test.1 Page %d %7.1f", pageno1, (float) pageno1);
+//    std::cout << "(pageno1:" << pageno1 << ")" << page->getRecord(rid[index])
+//        << "\n";
+//    std::cout << tmpbuf << "\n";
     if (strncmp(page->getRecord(rid[index]).c_str(), tmpbuf, strlen(tmpbuf))
         != 0) {
       PRINT_ERROR("ERROR :: CONTENTS DID NOT MATCH");
     }
 
+//    std::cout << "______2" << "\n";
     bufMgr->allocPage(file3ptr, pageno3, page3);
     sprintf((char*) tmpbuf, "test.3 Page %d %7.1f", pageno3, (float) pageno3);
     rid3 = page3->insertRecord(tmpbuf);
+//    std::cout << "(pageno3:" << pageno3 << ")" << page3->getRecord(rid3)
+//        << "\n";
+//    std::cout << tmpbuf << "\n";
 
+//    std::cout << "______3" << "\n";
     bufMgr->readPage(file2ptr, pageno2, page2);
     sprintf((char*) &tmpbuf, "test.2 Page %d %7.1f", pageno2, (float) pageno2);
+//    std::cout << "(pageno2:" << pageno2 << ")" << page2->getRecord(rid2)
+//        << "\n";
+//    std::cout << tmpbuf << "\n";
     if (strncmp(page2->getRecord(rid2).c_str(), tmpbuf, strlen(tmpbuf)) != 0) {
       PRINT_ERROR("ERROR :: CONTENTS DID NOT MATCH");
     }
 
+//    std::cout << "______4" << "\n";
     bufMgr->readPage(file3ptr, pageno3, page3);
     sprintf((char*) &tmpbuf, "test.3 Page %d %7.1f", pageno3, (float) pageno3);
     if (strncmp(page3->getRecord(rid3).c_str(), tmpbuf, strlen(tmpbuf)) != 0) {
       PRINT_ERROR("ERROR :: CONTENTS DID NOT MATCH");
     }
 
+//    std::cout << "______5" << "\n";
     bufMgr->unPinPage(file1ptr, pageno1, false);
+//    std::cout << "______6" << "\n";
   }
 
   for (i = 0; i < num / 3; i++) {
