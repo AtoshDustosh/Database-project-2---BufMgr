@@ -7,12 +7,14 @@
 
 #include <memory>
 #include <iostream>
+#include "string.h"
 #include "buffer.h"
 #include "exceptions/buffer_exceeded_exception.h"
 #include "exceptions/page_not_pinned_exception.h"
 #include "exceptions/page_pinned_exception.h"
 #include "exceptions/bad_buffer_exception.h"
 #include "exceptions/hash_not_found_exception.h"
+#include "exceptions/invalid_page_exception.h"
 
 namespace badgerdb {
 
@@ -38,7 +40,6 @@ namespace badgerdb {
      * Flushes out all dirty pages and deallocates the buffer pool and
      * the BufDesc table.
      */
-    // TODO
   }
 
   void BufMgr::advanceClock() {
@@ -130,7 +131,6 @@ namespace badgerdb {
       this->bufPool[frameNo] = tempPage;
     }
     page = &(this->bufPool[frameNo]);
-
   }
 
   void BufMgr::unPinPage(File *file, const PageId pageNo, const bool dirty) {
@@ -171,7 +171,7 @@ namespace badgerdb {
       FrameId tempFrameNo = tempBufDesc->frameNo;
       PageId tempPageNo = tempBufDesc->pageNo;
       File *tempFile = tempBufDesc->file;
-      if (file->filename() != tempFile->filename()) {
+      if (tempFile == NULL || file->filename() != tempFile->filename()) {
         continue;
       }
       if (tempBufDesc->valid == false) {
@@ -218,14 +218,26 @@ namespace badgerdb {
     page = &(this->bufPool[frameNo]);
   }
 
-  void BufMgr::disposePage(File *file, const PageId PageNo) {
+  void BufMgr::disposePage(File *file, const PageId pageNo) {
     /*
      * This method deletes a particular page from file. Before deleting the
      * page from file, it makes sure that if the page to be deleted is allocated
      * a frame in the buffer pool, that frame is freed and correspondingly
      * entry from hash table is also removed.
      */
-    // TODO
+    try {
+      FrameId frameNo = this->numBufs + 1;
+      this->hashTable->lookup(file, pageNo, frameNo);
+      if (frameNo == this->numBufs + 1) {
+        return;
+      }
+      this->bufDescTable[frameNo].Clear();
+      this->hashTable->remove(file, pageNo);
+      //    delete this->bufPool[frameNo];
+      // is this correct ? As we don't worry about the memory problem, I'll just left it here.
+    } catch (const HashNotFoundException &e) {
+    }
+    file->deletePage(pageNo);
   }
 
   void BufMgr::printSelf(void) {
